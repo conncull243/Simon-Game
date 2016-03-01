@@ -26,8 +26,14 @@ namespace Simon_Game
 
         private void newButton_Click(object sender, EventArgs e)
         {
+            Form f = this.FindForm();
+            f.Controls.Remove(this);
+            newButton.Visible = false;
+            titleLabel.Visible = false;
+            exitButton.Visible = false;
             GameScreen gs = new GameScreen();
-            gs.BringToFront();
+            f.Controls.Add(gs);
+          
         }
     }
 }

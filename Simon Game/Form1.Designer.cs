@@ -69,12 +69,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DodgerBlue;
-            this.ClientSize = new System.Drawing.Size(484, 386);
+            this.ClientSize = new System.Drawing.Size(584, 386);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.newButton);
             this.Controls.Add(this.titleLabel);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Simon";
             this.ResumeLayout(false);
 
         }
