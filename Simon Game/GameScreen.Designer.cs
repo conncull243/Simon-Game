@@ -32,6 +32,7 @@
             this.redButton = new System.Windows.Forms.Button();
             this.blueButton = new System.Windows.Forms.Button();
             this.yellowButton = new System.Windows.Forms.Button();
+            this.scoreLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // greenButton
@@ -74,11 +75,23 @@
             this.yellowButton.UseVisualStyleBackColor = false;
             this.yellowButton.Click += new System.EventHandler(this.yellowButton_Click);
             // 
+            // scoreLabel
+            // 
+            this.scoreLabel.AutoSize = true;
+            this.scoreLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.scoreLabel.ForeColor = System.Drawing.Color.MediumSlateBlue;
+            this.scoreLabel.Location = new System.Drawing.Point(46, 27);
+            this.scoreLabel.Name = "scoreLabel";
+            this.scoreLabel.Size = new System.Drawing.Size(116, 30);
+            this.scoreLabel.TabIndex = 4;
+            this.scoreLabel.Text = "Your Score:";
+            // 
             // GameScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Controls.Add(this.scoreLabel);
             this.Controls.Add(this.yellowButton);
             this.Controls.Add(this.blueButton);
             this.Controls.Add(this.redButton);
@@ -87,6 +100,7 @@
             this.Size = new System.Drawing.Size(600, 425);
             this.Load += new System.EventHandler(this.GameScreen_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -96,5 +110,6 @@
         private System.Windows.Forms.Button redButton;
         private System.Windows.Forms.Button blueButton;
         private System.Windows.Forms.Button yellowButton;
+        private System.Windows.Forms.Label scoreLabel;
     }
 }
