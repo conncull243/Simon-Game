@@ -57,7 +57,7 @@ namespace Simon_Game
         {
             Thread.Sleep(1000);
             Refresh();
-            scoreLabel.Text = "Your Score is: " + Convert.ToString(score);
+            scoreLabel.Text = "Your score is: " + Convert.ToString(score);
             score++;
             guess = 0;
             Random randNum = new Random();
