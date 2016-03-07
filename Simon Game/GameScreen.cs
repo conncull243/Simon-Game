@@ -22,6 +22,8 @@ namespace Simon_Game
 
         int guess = 0;
 
+        public static int score = 0;
+
         public GameScreen()
         {
             InitializeComponent();
@@ -29,15 +31,35 @@ namespace Simon_Game
 
         private void GameScreen_Load(object sender, EventArgs e)
         {
-            scoreLabel.Text = "Your score is: " + guess;
+            scoreLabel.Text = "Your score is: " + score;
             Form1.pattern.Clear();
             Refresh();
             Thread.Sleep(2000);
             ComputerTurn();
         }
 
+        private void GameOver()
+        {
+            mistake.Play();
+            Form f = this.FindForm();
+            redButton.Visible = false;
+            greenButton.Visible = false;
+            blueButton.Visible = false;
+            yellowButton.Visible = false;
+            scoreLabel.Visible = false;
+            GameOverScreen gos = new GameOverScreen();
+            f.Controls.Remove(this);
+            f.Controls.Add(gos);
+            this.Refresh();
+        }
+
         private void ComputerTurn()
         {
+            Thread.Sleep(1000);
+            Refresh();
+            scoreLabel.Text = "Your Score is: " + Convert.ToString(score);
+            score++;
+            guess = 0;
             Random randNum = new Random();
             Form1.pattern.Add(randNum.Next(0, 4));
 
@@ -56,7 +78,7 @@ namespace Simon_Game
                 else if (Form1.pattern[i] == 1)
                 {
                     redPlay.Play();
-                    greenButton.BackColor = Color.Coral;
+                    redButton.BackColor = Color.Coral;
                     Refresh();
                     Thread.Sleep(400);
                     redButton.BackColor = Color.Red;
@@ -94,11 +116,17 @@ namespace Simon_Game
 
                 greenButton.BackColor = Color.Green;
                 guess++;
+                Refresh();
+
+                if (guess == Form1.pattern.Count())
+                {
+                    ComputerTurn();
+                }
             }
 
             else
             {
-                mistake.Play();
+                GameOver();
             }
         }
 
@@ -115,17 +143,23 @@ namespace Simon_Game
 
                 redButton.BackColor = Color.Red;
                 guess++;
+                Refresh();
+
+                if (guess == Form1.pattern.Count())
+                {
+                    ComputerTurn();
+                }
             }
             
             else
             {
-                mistake.Play();
+                GameOver();
             }
         }
 
         private void yellowButton_Click(object sender, EventArgs e)
         {
-            if (Form1.pattern[guess] == 2)
+            if (Form1.pattern[guess] == 2)  
             {
                 yellowPlay.Play();
                 yellowButton.BackColor = Color.LightYellow;
@@ -135,11 +169,17 @@ namespace Simon_Game
 
                 yellowButton.BackColor = Color.Yellow;
                 guess++;
+                Refresh();
+
+                if (guess == Form1.pattern.Count())
+                {
+                    ComputerTurn();
+                }
             }
             
             else
             {
-                mistake.Play();
+                GameOver();
             }
         }
 
@@ -155,6 +195,17 @@ namespace Simon_Game
 
                 blueButton.BackColor = Color.Blue;
                 guess++;
+                Refresh();
+
+                if (guess == Form1.pattern.Count())
+                {
+                    ComputerTurn();
+                }
+            }
+
+            else
+            {
+                GameOver();
             }
         }
     }
